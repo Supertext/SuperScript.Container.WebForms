@@ -34,7 +34,7 @@ The exposed properties are
 
   Indicates which instance of `IEmitter` the content should be added to. If not specified then the contents will be added to the default implementation of `IEmitter`.
 
-* `InsertAt` [Nullable<int>]
+* `InsertAt` [Nullable&lt;int&gt;]
 
   Gets or sets an index in the collection at which the contents are to be inserted.
 

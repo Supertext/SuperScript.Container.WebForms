@@ -26,15 +26,15 @@ _**IMPORTANT NOTE:**_ This project does not wholly offer the functionality for w
   This is an abstract class which offers the base functionality required for a container control on an .aspx file.
 
 The exposed properties are
-* `AddLocationComments`
+* `AddLocationComments` [bool]
 
   Determines whether the emitted contents should contain comments indicating the original location when in debug-mode. The default value is `true`.
 
-* `EmitterKey`
+* `EmitterKey` [string]
 
   Indicates which instance of `IEmitter` the content should be added to. If not specified then the contents will be added to the default implementation of `IEmitter`.
 
-* `InsertAt`
+* `InsertAt` [Nullable<int>]
 
   Gets or sets an index in the collection at which the contents are to be inserted.
 

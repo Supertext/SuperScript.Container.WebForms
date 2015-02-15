@@ -1,0 +1,127 @@
+<h2>What Does It Do?</h2>
+
+<p>
+	This library is an add-on for <a href="https://github.com/Supertext/SuperScript.Common/" target="_blank">SuperScript</a>. It is strongly recommended
+	to read the <a href="http://supertext.github.io/SuperScript.Common/" target="_blank">documentation</a> for the core project before proceeding with this 
+	library. If you haven't yet read the core documentation then it is recommended that you start by reading about the 
+	<a href="http://supertext.github.io/SuperScript.Common/#!/core-concepts" target="_blank">core concepts</a>.
+</p>
+
+<p>
+	SuperScript.Container.WebForms contains the core code used by higher-level, more functional SuperScript projects which offer
+	a WebForms <em>.aspx container control for enclosing server-side entities to be processed by SuperScript.
+</p>
+
+<pre class="brush: c#">
+	public abstract class Container : System.Web.UI.WebControls.PlaceHolder
+	{
+	    public bool AddLocationComments { get; set; }
+	    public string EmitterKey { get; set; }
+	    public int? InsertAt { get; set; }
+	    protected abstract void __PreRender(object sender, EventArgs e)
+	    protected abstract string GenerateComment(string comment, bool startOnNewLine = true)
+	    protected string GetFileName()
+	    protected virtual string GetContents()
+	}
+</pre>
+
+<p>
+  The above abstract class contains the base functionality for retrieving the contents of a derived container control, allowing the 
+  derived implementation to move the contents into an implementation of <abbr title="SuperScript.Declarables.DeclarationBase"><code>DeclarationBase</code></abbr>.
+</p>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tr>
+		<td>AddLocationComments</td>
+		<td>bool</td>
+		<td>
+			<p>
+        Determines whether the emitted contents contain comments indicating the original location when in debug mode.
+			</p>
+			<p>
+        <strong>Optional</strong>. The default value is <code>true</code>.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>EmitterKey</td>
+		<td>string</td>
+		<td>
+			<p>
+				Indicates which instance of <abbr title="SuperScript.Emitters.IEmitter"><code>IEmitter</code></abbr> the content should be added to.
+			</p>
+			<p>
+				<strong>Optional</strong>. If not specified then the contents will be added to the default implementation of <abbr title="SuperScript.Emitters.IEmitter"><code>IEmitter</code></abbr>.
+			</p>
+			<p>
+				Read more about the <em>default emitter</em> <a href="http://supertext.github.io/SuperScript.Common/#!/emitters.default-emitter">here</a>.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>InsertAt</td>
+		<td>Nullable<int></td>
+		<td>
+			<p>
+        Gets or sets the index into which the resultant instance of <abbr title="SuperScript.Declarables.DeclarationBase"><code>CollectedScript</code></abbr> will be
+        inserted into the central <abbr title="IList&lt;DeclarationBase&gt; SuperScript.Declarations.Collection"><code>Collection</code></abbr> of declarations.
+			</p>
+			<p>
+			  <strong>Optional</strong>. Default value is <code>null</code> which appends the resultant instance of <abbr title="SuperScript.Declarables.DeclarationBase"><code>CollectedScript</code></abbr> to
+			  the central <abbr title="IList&lt;DeclarationBase&gt; SuperScript.Declarations.Collection"><code>Collection</code></abbr> of declarations.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>__PreRender</td>
+		<td>void</td>
+		<td>
+			<p>
+        This abstract method presents a location in derived types where the contents of the container control may be retrieved.
+			</p>
+			<p>
+			  This is also the lcoation where the contents of the container control are removed or replaced.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>GenerateComment</td>
+		<td>string</td>
+		<td>
+			<p>
+        This abstract method presents a location in derived types to generate a comment block, formatted for the specific output type of the derived implementation.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>GetFileName</td>
+		<td>string</td>
+		<td>
+			<p>
+			  Returns the relative path and filename of the control or page which is instantiating this control.
+			</p>
+			<p>
+			  Tyically this will be called by the derived implementation of <abbr title="SuperScript.Container.WebForms.Container.GenerateComment"><code>GenerateComment</code></abbr>.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>GetContents</td>
+		<td></td>
+		<td>
+			<p>
+        Obtains the contents that have been passed into this container control.
+			</p>
+			<p>
+			  Typically this will be called by the derived implementation of <abbr title="SuperScript.Container.WebForms.Container.__PreRender"><code>__PreRender</code></abbr>.
+			</p>
+		</td>
+	</tr>
+</table>

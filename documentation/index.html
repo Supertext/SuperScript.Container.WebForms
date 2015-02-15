@@ -26,8 +26,8 @@
 </pre>
 
 <p>
-  The above abstract class contains the base functionality for retrieving the contents of a derived container control, allowing the 
-  derived implementation to move the contents into an implementation of <abbr title="SuperScript.Declarables.DeclarationBase"><code>DeclarationBase</code></abbr>.
+	The above abstract class contains the base functionality for retrieving the contents of a derived container control, allowing the 
+	derived implementation to move the contents into an implementation of <abbr title="SuperScript.Declarables.DeclarationBase"><code>DeclarationBase</code></abbr>.
 </p>
 
 <table class="table table-bordered">
@@ -43,10 +43,10 @@
 		<td>bool</td>
 		<td>
 			<p>
-        Determines whether the emitted contents contain comments indicating the original location when in debug mode.
+        			Determines whether the emitted contents contain comments indicating the original location when in debug mode.
 			</p>
 			<p>
-        <strong>Optional</strong>. The default value is <code>true</code>.
+				<strong>Optional</strong>. The default value is <code>true</code>.
 			</p>
 		</td>
 	</tr>
@@ -67,15 +67,15 @@
 	</tr>
 	<tr>
 		<td>InsertAt</td>
-		<td>Nullable<int></td>
+		<td>Nullable&lt;int&gt;</td>
 		<td>
 			<p>
-        Gets or sets the index into which the resultant instance of <abbr title="SuperScript.Declarables.DeclarationBase"><code>CollectedScript</code></abbr> will be
-        inserted into the central <abbr title="IList&lt;DeclarationBase&gt; SuperScript.Declarations.Collection"><code>Collection</code></abbr> of declarations.
+        			Gets or sets the index into which the resultant instance of <abbr title="SuperScript.Declarables.DeclarationBase"><code>CollectedScript</code></abbr> will be
+				inserted into the central <abbr title="IList&lt;DeclarationBase&gt; SuperScript.Declarations.Collection"><code>Collection</code></abbr> of declarations.
 			</p>
 			<p>
-			  <strong>Optional</strong>. Default value is <code>null</code> which appends the resultant instance of <abbr title="SuperScript.Declarables.DeclarationBase"><code>CollectedScript</code></abbr> to
-			  the central <abbr title="IList&lt;DeclarationBase&gt; SuperScript.Declarations.Collection"><code>Collection</code></abbr> of declarations.
+				<strong>Optional</strong>. Default value is <code>null</code> which appends the resultant instance of <abbr title="SuperScript.Declarables.DeclarationBase"><code>CollectedScript</code></abbr> to
+				the central <abbr title="IList&lt;DeclarationBase&gt; SuperScript.Declarations.Collection"><code>Collection</code></abbr> of declarations.
 			</p>
 		</td>
 	</tr>
@@ -84,10 +84,10 @@
 		<td>void</td>
 		<td>
 			<p>
-        This abstract method presents a location in derived types where the contents of the container control may be retrieved.
+        			This abstract method presents a location in derived types where the contents of the container control may be retrieved.
 			</p>
 			<p>
-			  This is also the lcoation where the contents of the container control are removed or replaced.
+				This is also the lcoation where the contents of the container control are removed or replaced.
 			</p>
 		</td>
 	</tr>
@@ -96,7 +96,7 @@
 		<td>string</td>
 		<td>
 			<p>
-        This abstract method presents a location in derived types to generate a comment block, formatted for the specific output type of the derived implementation.
+				This abstract method presents a location in derived types to generate a comment block, formatted for the specific output type of the derived implementation.
 			</p>
 		</td>
 	</tr>
@@ -105,10 +105,10 @@
 		<td>string</td>
 		<td>
 			<p>
-			  Returns the relative path and filename of the control or page which is instantiating this control.
+				Returns the relative path and filename of the control or page which is instantiating this control.
 			</p>
 			<p>
-			  Tyically this will be called by the derived implementation of <abbr title="SuperScript.Container.WebForms.Container.GenerateComment"><code>GenerateComment</code></abbr>.
+				Tyically this will be called by the derived implementation of <abbr title="SuperScript.Container.WebForms.Container.GenerateComment"><code>GenerateComment</code></abbr>.
 			</p>
 		</td>
 	</tr>
@@ -117,10 +117,10 @@
 		<td></td>
 		<td>
 			<p>
-        Obtains the contents that have been passed into this container control.
+        			Obtains the contents that have been passed into this container control.
 			</p>
 			<p>
-			  Typically this will be called by the derived implementation of <abbr title="SuperScript.Container.WebForms.Container.__PreRender"><code>__PreRender</code></abbr>.
+				Typically this will be called by the derived implementation of <abbr title="SuperScript.Container.WebForms.Container.__PreRender"><code>__PreRender</code></abbr>.
 			</p>
 		</td>
 	</tr>

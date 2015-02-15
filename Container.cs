@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SuperScript.Configuration;
@@ -17,8 +16,6 @@ namespace SuperScript.Container.WebForms
 
         private bool _addLocationComments = true;
         internal string _emitterKey = Settings.Instance.DefaultEmitter.Key;
-        private const string ScriptNewLine = "\r\n";
-        private const string ScriptTab = "\t";
 
         #endregion
 
@@ -26,7 +23,7 @@ namespace SuperScript.Container.WebForms
         #region Properties
 
         /// <summary>
-        /// <para>Determines whether the emitted contents contain comments indicating the original location when in deubg-mode.</para>
+        /// <para>Determines whether the emitted contents contain comments indicating the original location when in debug mode.</para>
         /// <para>The default value is TRUE.</para>
         /// </summary>
         public bool AddLocationComments
@@ -67,34 +64,12 @@ namespace SuperScript.Container.WebForms
 
 
         /// <summary>
-        /// Generates a JavaScript multi-line comment block containing a highlighted comment.
+        /// Generates a comment block, formatted for the specific output type of the derived implementation.
         /// </summary>
-        /// <param name="comment">The comment which should appear highlighted inside the multi-line comment.</param>
+        /// <param name="comment">The comment which should appear inside the formatted comment block.</param>
         /// <param name="startOnNewLine">Indicates whether a new line should be added before the start of the comment block.</param>
-        /// <returns>A string containing the specified comment inside a multi-line JavaScript comment block.</returns>
-        protected virtual string GenerateComment(string comment, bool startOnNewLine = true)
-        {
-            var messageLength = comment.Length + 2;
-            var padding = new StringBuilder(messageLength);
-            for (var i = 0; i < messageLength; i++)
-            {
-                padding.Append("*");
-            }
-
-            var startLine = string.Empty;
-            if (startOnNewLine)
-            {
-                startLine = string.Format("{0}{1}{1}{1}",
-                                     ScriptNewLine,
-                                     ScriptTab);
-            }
-            return string.Format("{0}/*{3}*/{1}{2}{2}{2}/* {4} */{1}{2}{2}{2}/*{3}*/{1}{2}{2}{2}",
-                                 startLine,
-                                 ScriptNewLine,
-                                 ScriptTab,
-                                 padding,
-                                 comment);
-        }
+        /// <returns>A string containing the specified comment inside a formatted comment block.</returns>
+        protected abstract string GenerateComment(string comment, bool startOnNewLine = true);
 
 
         /// <summary>
